@@ -155,7 +155,6 @@ class StripePayment {
   /// https://tipsi.github.io/tipsi-stripe/docs/confirmPaymentIntent.html
   static Future<PaymentIntentResult> confirmPaymentIntent(PaymentIntent intent) async {
     assert(intent.clientSecret != null);
-    assert(intent.paymentMethodId != null);
     final result = await _channel.invokeMethod('confirmPaymentIntent', intent.toJson());
     return PaymentIntentResult.fromJson(result);
   }
